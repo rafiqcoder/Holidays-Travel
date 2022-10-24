@@ -5,7 +5,7 @@ import Header from './Header/Header';
 
 const Main = () => {
     return (
-        <div className='max-w-[1140px] mx-auto bg-gray-100'>
+        <div className=' mx-auto bg-gray-100'>
             <Header />
             <Outlet></Outlet>
             <Footer></Footer>

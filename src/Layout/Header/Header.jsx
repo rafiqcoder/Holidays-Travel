@@ -1,11 +1,18 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import MobileHeader from "./MobileHeader";
 
 const Header = () => {
+   const location = useLocation();
   return (
     <>
-      <div className=" hidden sm:flex navbar bg-base-100">
+      <div
+        className={`hidden sm:flex navbar  ${
+          location.pathname === "/"
+            ? "bg-[#ffffff29] absolute top-0 z-10  text-white"
+            : undefined
+        }  py-4 font-bold`}
+      >
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -85,11 +92,39 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <NavLink to="/" className="btn-outline btn-primary border rounded-r-full rounded-l-full py-2 px-5">
-           Login
+          <NavLink
+            to="/"
+            className="btn-outline btn-primary border rounded-r-full rounded-l-full py-2 px-5 mr-2"
+          >
+            Login
           </NavLink>
+     
+            
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img alt="" src="https://placeimg.com/80/80/people" />
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 text-gray-900"
+              >
+                <li>
+                  <a href="/" className="justify-between">
+                    Profile
+
+                  </a>
+                </li>
+               
+                <li>
+                  <a href="/">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
+     
 
       {/** Header for Mobile */}
       <MobileHeader></MobileHeader>
